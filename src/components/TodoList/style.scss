@@ -54,6 +54,10 @@
     [data-task='task'] {
       display: flex;
       gap: 10px;
+
+      input {
+        cursor: pointer;
+      }
     }
 
     & + li {
@@ -64,6 +68,13 @@
       background-color: transparent;
       border: none;
       color: #810101;
+      cursor: pointer;
+      transition: filter 0.2s;
+      font-size: 1rem;
+
+      &:hover {
+        filter: brightness(150%);
+      }
     }
 
     .isCompleted p {
