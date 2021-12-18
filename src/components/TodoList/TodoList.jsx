@@ -59,6 +59,11 @@ export class TodoList extends Component {
                   inputText: event.target.value,
                 }));
               }}
+              onKeyUp={(e) => {
+                if (e.key === 'Enter' && this.state.inputText !== '') {
+                  this.handleAddTask();
+                }
+              }}
               value={this.state.inputText}
             />
             <button onClick={this.handleAddTask}>
