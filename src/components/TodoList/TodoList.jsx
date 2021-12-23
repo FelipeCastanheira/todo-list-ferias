@@ -35,21 +35,39 @@ export class TodoList extends Component {
   }
 
   handleRemoving = (id) => {
-    this.setState((state, _props) => ({
-      tasks: state.tasks.filter((task) => task.id !== id),
+    const novoArray = this.state.tasks.filter((task) => task.id !== id);
+
+    this.setState((_state, _props) => ({
+      tasks: [...novoArray],
     }))
   }
 
   handleCheck = (id) => {
-    const updateTasks = this.state.tasks.map((task) => {
-      if(task.id === id) task.isCompleted = !task.isCompleted; 
+    const checkedTasks = this.state.tasks.map((task) => {
+      if(task.id === id) task.isCompleted = !task.isCompleted;
       return task;
     })
 
-    this.setState((state, _props) => ({
-      tasks: [...updateTasks],
+    this.setState((_state, _props) => ({
+      tasks: [...checkedTasks],
     }))
   }
+  // handleRemoving = (id) => {
+  //   this.setState((state, _props) => ({
+  //     tasks: state.tasks.filter((task) => task.id !== id),
+  //   }))
+  // }
+
+  // handleCheck = (id) => {
+  //   const updateTasks = this.state.tasks.map((task) => {
+  //     if(task.id === id) task.isCompleted = !task.isCompleted; 
+  //     return task;
+  //   })
+
+  //   this.setState((state, _props) => ({
+  //     tasks: [...updateTasks],
+  //   }))
+  // }
 
   render() {
     return (
