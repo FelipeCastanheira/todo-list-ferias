@@ -11,7 +11,9 @@ export class TodoList extends Component {
       inputTxt: '',
     }
     this.handleAddTask = this.handleAddTask.bind(this);
-    this.handleAddTask = this.handleAddTask.bind(this);
+    this.handleText = this.handleText.bind(this);
+    this.handleRemoving = this.handleRemoving.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
   }
 
   handleText = (e) => {
@@ -32,6 +34,23 @@ export class TodoList extends Component {
     }))
   }
 
+  handleRemoving = (id) => {
+    this.setState((state, _props) => ({
+      tasks: state.tasks.filter((task) => task.id !== id),
+    }))
+  }
+
+  handleCheck = (id) => {
+    const updateTasks = this.state.tasks.map((task) => {
+      if(task.id === id) task.isCompleted = !task.isCompleted; 
+      return task;
+    })
+
+    this.setState((state, _props) => ({
+      tasks: [...updateTasks],
+    }))
+  }
+
   render() {
     return (
       <div className="todo-list">
@@ -49,10 +68,10 @@ export class TodoList extends Component {
             {this.state.tasks.map((task) => (
               <li key={task.id}>
                 <div className={task.isCompleted? 'isCompleted': ''} data-task="task">
-                  <input type="checkbox" />
+                  <input type="checkbox" onClick={() => this.handleCheck(task.id)}/>
                   <p>{task.text}</p>
                 </div>
-                <button>
+                <button onClick={() => this.handleRemoving(task.id)}>
                   <i className="far fa-trash-alt"></i>
                 </button>
               </li>
