@@ -52,23 +52,7 @@ export class TodoList extends Component {
       tasks: [...checkedTasks],
     }))
   }
-  // handleRemoving = (id) => {
-  //   this.setState((state, _props) => ({
-  //     tasks: state.tasks.filter((task) => task.id !== id),
-  //   }))
-  // }
-
-  // handleCheck = (id) => {
-  //   const updateTasks = this.state.tasks.map((task) => {
-  //     if(task.id === id) task.isCompleted = !task.isCompleted; 
-  //     return task;
-  //   })
-
-  //   this.setState((state, _props) => ({
-  //     tasks: [...updateTasks],
-  //   }))
-  // }
-
+  
   render() {
     return (
       <div className="todo-list">
